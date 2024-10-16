@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucapan Ulang Tahun</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+            /* Menghindari scrollbar */
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8);
+            /* Opacity dikurangi */
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            max-width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            /* Agar teks tetap di atas gambar */
+        }
+
+        h1 {
+            color: #d35400;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+        }
+
+        p {
+            color: #34495e;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #d35400;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #c85c00;
+        }
+
+        .background {
+            background-image: url('foto.png');
+            /* Ganti dengan URL gambar */
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            /* Agar gambar tetap di belakang */
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            /* Agar gambar berada di belakang teks */
+        }
+
+        .footer {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background" id="backgroundImage" style="display: none;"></div>
+    <div class="card" id="formCard">
+        <h1>Isi Nama</h1>
+        <input type="text" id="nameInput" placeholder="Masukkan nama kamu" />
+        <button onclick="showGreeting()">Kirim</button>
+    </div>
+    <div class="card" id="greetingCard" style="display: none;">
+        <h1>Happy Birthday, <span id="userName"></span>!!!</h1>
+        <p>Semoga hari istimewa ini dipenuhi dengan kebahagiaan, cinta, dan semua yang kamu inginkan.</p>
+        <p>Ini adalah saat yang tepat untuk merayakan semua yang kamu capai dan semua hal yang akan datang.</p>
+        <p>Rayakan dengan penuh suka cita, karena hari ini adalah harimu!</p>
+        <div class="footer">Dari: Orang Tampan</div>
+    </div>
+
+    <script>
+        function showGreeting() {
+            const name = document.getElementById("nameInput").value.trim();
+
+            if (name) { // Cek apakah nama tidak kosong
+                document.getElementById("userName").textContent = name;
+                document.getElementById("formCard").style.display = "none";
+                document.getElementById("greetingCard").style.display = "block";
+                document.getElementById("backgroundImage").style.display = "block"; // Tampilkan gambar latar belakang
+            } else {
+                alert("Silakan masukkan nama!");
+            }
+        }
+    </script>
+</body>
+
+</html>
